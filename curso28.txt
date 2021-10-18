@@ -1,0 +1,12 @@
+request.data Contiene los datos de la solicitud entrante como una cadena en caso de que venga con un tipo mime que Flask no maneja.
+
+request.args: los pares clave / valor en la cadena de consulta de URL
+request.form: los pares clave / valor en el cuerpo, de un formulario de publicación HTML o una solicitud de JavaScript que no está codificada en JSON
+request.files: los archivos del cuerpo, de los que Flask mantiene separados form. Deben usarse formularios HTML enctype=multipart/form-datao no se cargarán archivos.
+request.values: combinado argsy form, prefiriendo argssi las teclas se superponen
+request.json: datos JSON analizados. La solicitud debe tener el application/jsontipo de contenido o utilizar request.get_json(force=True)para ignorar el tipo de contenido.
+Todos estos son MultiDictcasos (excepto json). Puede acceder a los valores usando:
+
+request.form['name']: use la indexación si sabe que la clave existe
+request.form.get('name'): utilícelo getsi es posible que la clave no exista
+request.form.getlist('name'): utilícelo getlistsi la clave se envía varias veces y desea una lista de valores. getsolo devuelve el primer valor.
